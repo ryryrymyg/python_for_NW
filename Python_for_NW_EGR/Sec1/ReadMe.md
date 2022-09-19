@@ -78,10 +78,41 @@ virtualenvwrapper.user_scripts creating /home/<username>/venv/pyneng/bin/postact
 virtualenvwrapper.user_scripts creating /home/<username>/venv/pyneng/bin/get_env_details
 (pyneng)$
 ```
-仮想環境に入れました。
+仮想環境を構築し、入れました。
 これで.bashrcで指定した仮想環境設定格納ディレクトリにpynengディレクトリが作成されました。
 ```
-(pyneng)$ ls ~/venv
+(pyneng)$ ls ~/venv/
 get_env_details  postactivate    postmkproject     postrmvirtualenv  predeactivate  premkvirtualenv  pyneng
 initialize       postdeactivate  postmkvirtualenv  preactivate       premkproject   prermvirtualenv
 ```
+以下のコマンドで仮想環境から抜けます
+```
+(pyneng)$ deactivate
+$
+```
+構築済みの環境にはworkonコマンドで入れます
+```
+$ workon pyneng
+(pynenv)$ 
+```
+任意の仮想環境から、別の構築済み環境に移行する場合もworkonコマンドで移行できる
+```
+$ workon Test
+(Test)$ workon pyneng
+(pyneng)$
+```
+仮想環境を削除したい場合はrmvirtualenvを使う
+```
+$ rmvirtualenv Test
+Removing Test...
+$
+```
+仮想環境にどんなパッケージがインストールされているかを確認したいときはlssitepackagesコマンドを使います
+```
+(pyneng)$ lssitepackages
+__pycache__      _virtualenv.py            pip-22.2.2.dist-info   setuptools                    wheel
+_distutils_hack  distutils-precedence.pth  pip-22.2.2.virtualenv  setuptools-65.3.0.dist-info   wheel-0.37.1.dist-info
+_virtualenv.pth  pip                       pkg_resources          setuptools-65.3.0.virtualenv  wheel-0.37.1.virtualenv
+```
+
+他にもvenvコマンドでも仮想環境を構築できる(pythonのビルトインモジュール)
